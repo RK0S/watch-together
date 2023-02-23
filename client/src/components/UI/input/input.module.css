@@ -1,0 +1,12 @@
+.input {
+    background: inherit;
+    color: white;
+    border: 2px solid white;
+    border-radius: 14px;
+    padding: 10px 0 9px 20px;
+    width: 100%;
+}
+
+.input::placeholder {
+    color: #577C96;
+}

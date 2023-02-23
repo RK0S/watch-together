@@ -1,10 +1,11 @@
+import AppRouter from "./components/AppRouter";
 
 
 function App() {
     return (
-        <div className="App">
-            Worked
-        </div>
+        <main>
+            <AppRouter />
+        </main>
     );
 }
 

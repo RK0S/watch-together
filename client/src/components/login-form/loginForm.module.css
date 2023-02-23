@@ -1,0 +1,16 @@
+.login_form {
+    width: 600px;
+    height: 350px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 60px 100px;
+    margin: 0 auto;
+}
+
+.login_form__input__first {
+    margin-bottom: 30px;
+}
+
+.login_form__input__second {
+    margin-bottom: 72px;
+}

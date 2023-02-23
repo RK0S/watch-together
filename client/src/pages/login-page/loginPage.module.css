@@ -1,0 +1,17 @@
+.login_page{
+    padding-top: 100px;
+    text-align: center;
+    padding-bottom: 100px;
+    height: 100%;
+}
+
+.title {
+    margin-bottom: 100px;
+}
+
+.author {
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+}

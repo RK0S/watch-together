@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&family=Open+Sans:wght@400;500&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+h6 {
+    font-weight: 500;
+    font-size: 11px;
+}
+
+main {
+    background: #00375C;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
