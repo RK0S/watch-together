@@ -1,10 +1,20 @@
 import React from 'react';
 
-import classes from './input.module.css'
+import classes from './input.module.css';
 
-const Input = ({extraClasses, placeholder}) => {
+const Input = ({ extraClasses, value, placeholder, changeParams }) => {
+    function changeValue(e) {
+        changeParams(e);
+    }
+
     return (
-        <input className={[classes.input, extraClasses].join(' ')} type="text" placeholder={placeholder} />
+        <input
+            onChange={(e) => changeValue(e)}
+            value={value}
+            placeholder={placeholder}
+            className={[classes.input, extraClasses].join(' ')}
+            type="text"
+        />
     );
 };
 
