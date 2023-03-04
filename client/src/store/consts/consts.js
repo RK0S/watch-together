@@ -1,0 +1,4 @@
+
+export const ADD_USERNAME = 'CREATE_USERNAME'
+export const CREATE_SESSIONID = 'CREATE_SESSIONID'
+export const ADD_LINK = 'CREATE_LINK'

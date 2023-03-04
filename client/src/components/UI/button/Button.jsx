@@ -1,15 +1,11 @@
-import React from 'react';
 
 import classes from './button.module.css'
 
-const Button = ({name, onClick}) => {
-    function submit(e) {
-        e.preventDefault();
-        onClick()
-    }
+const Button = ({children, ...props}) => {
+    console.log('btn')
     return (
-        <button onClick={e => submit(e)} className={classes.button}>
-            {name}
+        <button {...props} className={classes.button}>
+            {children}
         </button>
     );
 };

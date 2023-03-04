@@ -1,43 +1,32 @@
-import React, { useState } from 'react';
-import {watchingSlice} from '../../store/reducers/watchingSlice';
-import Button from '../UI/button/Button';
+import React from 'react';
 import Input from './../UI/input/Input';
-import {useDispatch} from 'react-redux'
-import { useNavigate } from 'react-router-dom';
-import { roomId } from '../../consts/roomId';
+import Button from '../UI/button/Button';
+import useInput from './../../hooks/useInput';
+import { useAuth } from './../../hooks/useAuth';
 
 
-import classes from './loginForm.module.css'
+import classes from './loginForm.module.css';
 
 const LoginForm = () => {
-    const [info, setInfo] = useState({username: 'Watcher', link: ''})
-    const {setName, setLink} = watchingSlice.actions
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const name = useInput('Watcher');
+    const link = useInput('');
+    const {submit, isValidationError} = useAuth(name.value, link.value)
 
-    function changeName(e) {
-        setInfo({...info, username: e.target.value})
-    }
-
-    function changeLink(e) {
-        setInfo({...info, link: e.target.value})
-    }
-
-    function changeReducerState() {
-        if (info.link.split('v=')[1]) {
-            dispatch(setName(info.username))
-            dispatch(setLink(info.link))
-            navigate(`/room/${roomId}`)
-        } else {
-            console.log('Введена неверная ссылка');
-        }
-    }
 
     return (
         <form className={classes.login_form}>
-            <Input changeParams={changeName} value={info.username} extraClasses={classes.login_form__input__first} placeholder='Введите имя' />
-            <Input changeParams={changeLink} value={info.link} extraClasses={classes.login_form__input__second} placeholder='Введите ссылку' />
-            <Button onClick={changeReducerState} name='Войти' />
+            <Input
+                {...name}
+                extraClass={classes.login_form__input__first}
+                placeholder="Введите имя"
+            />
+            <Input
+                {...link}
+                extraClass={classes.login_form__input__second}
+                placeholder="Введите ссылку"
+            />
+            {isValidationError && <div>Пустое имя или неккорректная ссылка</div>}
+            <Button onClick={submit}>Войти</Button>
         </form>
     );
 };

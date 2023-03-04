@@ -1,12 +1,7 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit'
-import watchingReducer from './reducers/watchingSlice'
+import { combineReducers, createStore } from "redux";
+import reducers from "./reducers";
+import { composeWithDevTools } from '@redux-devtools/extension'
 
-const rootReducer = combineReducers({
-    watchingReducer
-})
+const rootReducer = combineReducers(reducers)
 
-export const setupStore = () => {
-    return configureStore({
-        reducer: rootReducer
-    })
-}
+export const store = createStore(rootReducer, composeWithDevTools())
