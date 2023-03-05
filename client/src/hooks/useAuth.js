@@ -1,9 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUsername, createSessionId, addLink } from './../store/reducers/action-creators/authActions';
 import createRoomId from './../helpers/createRoomId';
-import { useState } from 'react';
-import { useCallback } from 'react';
-
+import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 // export const useAuth = () => {
 //     const params = useParams()
@@ -26,15 +25,21 @@ import { useCallback } from 'react';
 export const useAuth = (name, link) => {
     const dispatch = useDispatch();
     const [isValidationError, setIsValidationError] = useState(false);
+    const navigate = useNavigate();
+    const { sessionId }  = useSelector(state => state.auth)
 
     const youtubeRegex = /(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&"'>]+)/;
 
+    useEffect(() => {
+        dispatch(createSessionId(createRoomId()))
+    }, []);
+
     const submit = (e) => {
         e.preventDefault()
-        if (name && link.match(youtubeRegex)) {
+        if (name && name.length < 30 && link.match(youtubeRegex)) {
             dispatch(addUsername(name))
-            dispatch(createSessionId(createRoomId()))
             dispatch(addLink(link))
+            navigate(`/room/${sessionId}`)
         } else {
             setIsValidationError(true)
         }

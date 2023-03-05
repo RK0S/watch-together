@@ -25,7 +25,7 @@ const LoginForm = () => {
                 extraClass={classes.login_form__input__second}
                 placeholder="Введите ссылку"
             />
-            {isValidationError && <div>Пустое имя или неккорректная ссылка</div>}
+            {isValidationError && <span>*Неподходящее имя или некорректная ссылка</span>}
             <Button onClick={submit}>Войти</Button>
         </form>
     );

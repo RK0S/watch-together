@@ -4,5 +4,5 @@ import RoomPage from './../pages/room-page/RoomPage';
 
 export const routes = [
     {path: '/login', element: <LoginPage/>},
-    {path: '/room', element: <RoomPage/>},
+    {path: '/room/:id', element: <RoomPage/>},
 ]
